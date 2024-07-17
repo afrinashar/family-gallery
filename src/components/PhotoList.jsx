@@ -104,7 +104,7 @@ console.log(photosData);
             <div className="col-lg-4 col-sm-12" key={photo._id}>
               <Link className="Link" onClick={() => handleItemClick(photo)}>
                 <div className="card p-3 shadow mb-5 bg-body rounded">
-                  <img src={`https://photo-gallery-nxf3.onrender.com${photo.imageUrl}`} alt={photo.title} className="mw-100 hover hover-shadow border-dark shadow-1-strong rounded mb-4" />
+                  <img src={`https://family-gallery-backend-gb9l.onrender.com${photo.imageUrl}`} alt={photo.title} className="mw-100 hover hover-shadow border-dark shadow-1-strong rounded mb-4" />
                   <div className="card-title">{photo.name}</div>
                 </div>
               </Link>
@@ -130,7 +130,7 @@ console.log(photosData);
           </Modal.Header>
           <Modal.Body>
             <div className="bg-image hover-zoom">
-              <Image className="w-100" src={`https://photo-gallery-nxf3.onrender.com${edit.imageUrl}`} />
+              <Image className="w-100" src={`https://family-gallery-backend-gb9l.onrender.com${edit.imageUrl}`} />
             </div>
        <h6>Description :</h6>  <p className='pl-5 ml-5'>  {edit.description}</p> 
         <div className='float-left'>  <h6 >Created Date</h6>  {edit.createdAt.slice(0,10)}   </div>  
