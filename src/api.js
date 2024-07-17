@@ -31,7 +31,7 @@ const api = axios.create({
 
  
 export const getPhotos = async (searchTerm = '', page = 1, limit = 10, sortBy = 'name', sortOrder = 'asc') => {
-  const { data } = await axios.get('https://family-gallery-backend-gb9l.onrender.com/FamilyGallery', {
+  const { data } = await axios.get('https://family-gallery-backend-gb9l.onrender.com/photos', {
     params: {
       search: searchTerm,
       page,
