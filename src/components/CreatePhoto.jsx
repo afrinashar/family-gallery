@@ -1,9 +1,9 @@
-import   { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
 import { useMutation, useQueryClient } from 'react-query';
 import { createPhoto } from '../api';
 import { useNavigate } from 'react-router-dom';
-
+ import "./Photo.css"
 const CreatePhoto = () => {
   const [showModal, setShowModal] = useState(true);
   const queryClient = useQueryClient();
@@ -24,6 +24,7 @@ const CreatePhoto = () => {
     name: '',
     description: '',
     imageUrl: null,
+    category: '', // Added for the dropdown
   });
 
   const handleCreate = async (e) => {
@@ -32,6 +33,7 @@ const CreatePhoto = () => {
     formData.append('name', photoData.name);
     formData.append('description', photoData.description);
     formData.append('image', photoData.imageUrl);
+    formData.append('category', photoData.category); // Adding category to formData
 
     mutation.mutate(formData);
   };
@@ -41,6 +43,7 @@ const CreatePhoto = () => {
       name: '',
       description: '',
       imageUrl: null,
+      category: '', // Reset the category
     });
     setShowModal(false);
     navigate('/photos');
@@ -65,8 +68,8 @@ const CreatePhoto = () => {
     <div>
       <Modal show={showModal} onHide={handleClose}>
         <div className="modal-header">
-          <h3 className="modal-title bg-primary text-white m-3">Create Profile</h3>
-          <button type="button" className="close p-2 m-2" onClick={handleClose} aria-label="Close">
+          <h3 className="modal-title bg-primary text-white m-3">Create Photo</h3>
+          <button type="button" className="close bg-light p-2 m-2" onClick={handleClose} aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -98,7 +101,7 @@ const CreatePhoto = () => {
               <label htmlFor="imageUrl">Upload Image:</label>
               <input
                 type="file"
-                className="form-control bg-primary"
+                className="form-control file-upload-input"
                 id="imageUrl"
                 name="imageUrl"
                 accept="image/*"
@@ -106,10 +109,27 @@ const CreatePhoto = () => {
                 required
               />
             </div>
+            <div className="form-group">
+              <label htmlFor="category">Select Category:</label>
+              <select
+                className="form-control"
+                id="category"
+                name="category"
+                value={photoData.category}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled>Select a category</option>
+                <option value="fero">FERO</option>
+                <option value="leo">LEO</option>
+                <option value="pio">PIO</option>
+                <option value="rabi">RABISON</option>
+              </select>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button type="submit" variant="primary">
-              Create Image
+              Create Photo
             </Button>
           </Modal.Footer>
         </form>

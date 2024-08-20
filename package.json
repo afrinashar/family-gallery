@@ -15,6 +15,7 @@
     "@tanstack/react-query-devtools": "^5.9.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
+    "file-saver": "^2.0.5",
     "office-ui-fabric-core": "^11.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",

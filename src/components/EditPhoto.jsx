@@ -1,29 +1,33 @@
-import   { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useMutation, useQuery } from 'react-query';
-import { getPhotoById, updatePhoto } from '../api'; // Assuming you have an API function to get and update a photo
+import { getPhotoById, updatePhoto } from '../api';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
+import Spinner from '../modules/spinner';
 const UpdatePhoto = () => {
   const [showModal, setShowModal] = useState(true);
   const navigate = useNavigate();
-  const { id } = useParams()
+  const { id } = useParams();
+  
   const { data: existingPhoto, isLoading: photoLoading } = useQuery(
     ['getPhoto', id],
     () => getPhotoById(id)
   );
 
-  const mutation = useMutation(updatePhoto(id), {
-    onSuccess: () => {
-      console.log('Image updated successfully');
-      setShowModal(false);
-      navigate('/photos');
-    },
-    onError: (error) => {
-      console.error('Error updating image:', error);
-    },
-  });
+  const mutation = useMutation(
+    (updatedData) => updatePhoto(id, updatedData),
+    {
+      onSuccess: () => {
+        console.log('Image updated successfully');
+        setShowModal(false);
+        navigate('/photos');
+      },
+      onError: (error) => {
+        console.error('Error updating image:', error);
+      },
+    }
+  );
 
   const [photoData, setPhotoData] = useState({
     name: '',
@@ -36,21 +40,23 @@ const UpdatePhoto = () => {
       setPhotoData({
         name: existingPhoto.name,
         description: existingPhoto.description,
-        // You might want to handle the image separately depending on your use case
+        imageUrl: existingPhoto.imageUrl, // You may want to display the existing image
       });
     }
   }, [existingPhoto]);
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    mutation.mutate({ id, data: id });
+    mutation.mutate(photoData);  
+    setShowModal(false);
+    navigate('/photos');
   };
 
   const handleClose = () => {
     setShowModal(false);
     navigate('/photos');
   };
-  console.log(photoData,"ext",id);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setPhotoData((prevData) => ({
@@ -60,17 +66,17 @@ const UpdatePhoto = () => {
   };
 
   if (photoLoading) {
-    return <p>Loading...</p>;
+    return   <Spinner />;
   }
 
   return (
     <div>
       <Modal show={showModal} onHide={handleClose}>
-        <div className="modal-header bg-primary">
+        <div className="modal-header bg-primary ">
           <h3 className="modal-title text-white m-3">Edit Profile</h3>
           <button
             type="button"
-            className="close p-2 m-2"
+            className="close p-2 m-2 bg-light"
             onClick={handleClose}
             aria-label="Close"
           >
@@ -101,7 +107,7 @@ const UpdatePhoto = () => {
                 onChange={handleChange}
               />
             </div>
-            {/* You might want to handle the image separately based on your use case */}
+            {/* Handle image separately if needed */}
           </Modal.Body>
           <Modal.Footer>
             <Button type="submit" variant="primary">

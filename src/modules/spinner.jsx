@@ -1,10 +1,14 @@
 import React from 'react'
-import './spinner.css'
-const Spinner = () => {
-  return (<>
-    <div className="spinner-7"></div> <br></br>
-    <h1>Loading...</h1>
-  </>)
-}
+import './spinner.css';
 
-export default Spinner
+const Spinner = () => {
+  return (
+    <div className="spinner-container">
+      <div className="spinner-7"></div>
+      <h1 className="loading-text">Loading...</h1>
+    </div>
+  );
+};
+
+export default Spinner;
+

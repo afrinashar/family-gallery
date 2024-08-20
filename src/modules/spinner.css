@@ -1,21 +1,53 @@
+/* Center the spinner and text */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  width: 50vw;
+  border-radius: 70%;
+   /* Optional: dark background for contrast */
+}
+
+/* Spinner animation */
 .spinner-7 {
-    --d:22px;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    color: #ad02fc;
-    box-shadow: 
-      calc(1*var(--d))      calc(0*var(--d))     0 0,
-      calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1px,
-      calc(0*var(--d))      calc(1*var(--d))     0 2px,
-      calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
-      calc(-1*var(--d))     calc(0*var(--d))     0 4px,
-      calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
-      calc(0*var(--d))      calc(-1*var(--d))    0 6px;
-    animation: s7 1s infinite steps(8);
+  width: 80px;
+  height: 80px;
+  border: 12px solid #ffffff; /* Light grey */
+  border-top: 12px solid #ff0000; /* Orange */
+  border-bottom: 12px solid #ffb7b7; /* Orange */
+
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  margin: 20px 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading text animation */
+.loading-text {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 2rem;
+  color: #ff0000; /* Orange */
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  @keyframes s7 {
-    100% {transform: rotate(1turn)}
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
   }
-  
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

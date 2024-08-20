@@ -1,0 +1,72 @@
+/* Custom styles for Google Photos-like design */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card {
+    padding: 3px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: -5px 2px 37px -11px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -5px 2px 37px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: -5px 2px 37px -11px rgba(0,0,0,0.75); 
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  
+  .card-img-top {
+    border-radius: 7px;
+  }
+  
+  .modal-title {
+    font-weight: bold;
+  }
+  
+  .modal-footer .btn {
+    margin-right: 10px;
+  }
+  .dropdown :hover{
+background-color:  rgb(247, 138, 138);
+text-decoration-color: aliceblue;
+color: rgb(255, 255, 255);
+  }
+  .content{
+    background-color: rgb(250, 250, 250);
+    
+  }
+ /* create  */
+
+ .file-upload-input {
+  background-color: #f8f9fa;
+  border: 2px solid #ced4da;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.file-upload-input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.modal-header {
+  border-bottom: 0;
+}
+
+.modal-footer {
+  border-top: 0;
+}

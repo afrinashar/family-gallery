@@ -43,6 +43,7 @@ export const getPhotos = async (searchTerm = '', page = 1, limit = 10, sortBy = 
   return data;
 };
 
+
 export const getPhotoById = async (photoId) => {
   console.log(photoId,"iddd");
     const response = await api.get(`/photos/${photoId}`);
