@@ -22,7 +22,7 @@ import { useQuery } from 'react-query';
 // // Add more API functions for create, update, and delete if needed
 // import axios from 'axios';
 
-  const API_BASE_URL = 'https://photo-gallery-nxf3.onrender.com';
+  const API_BASE_URL = 'https://family-gallery-backend-gb9l.onrender.com';
 // api.js
 import axios from 'axios';
 const api = axios.create({
